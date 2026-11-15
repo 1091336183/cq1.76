@@ -1,0 +1,107 @@
+/* ===== 传奇1.76 · 重生  V0.1 基础样式 ===== */
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0; width: 100%; height: 100%;
+  background: #070605; overflow: hidden;
+  font-family: "Microsoft YaHei", "PingFang SC", "SimSun", serif;
+  color: #e8dcc0;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+:root {
+  --gold: #c9a227;
+  --gold-lt: #e9c964;
+  --gold-dk: #8a6a32;
+  --bg1: #3a2617;
+  --bg2: #241608;
+  --bg3: #1a0f06;
+  --text: #e8dcc0;
+  --text-dim: #a89575;
+  --red: #b3352a;
+  --hp: #c0281c;
+  --mp: #1f5fb0;
+  --exp: #b8912b;
+  --q0: #e8e8e8;
+  --q1: #5aa9ff;
+  --q2: #ffd75e;
+  --q3: #c77dff;
+  --q4: #ff9f43;
+  --affix: #7cfc7c;
+}
+#stage {
+  position: absolute; left: 0; top: 0;
+  width: 1024px; height: 768px;
+  transform-origin: top left;
+  background: #0d0b09;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0,0,0,.9);
+}
+#game { position: absolute; left: 0; top: 0; display: block; }
+.hidden { display: none !important; }
+
+/* 滚动条 */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #1b1108; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a4812f, #6d4f1c);
+  border-radius: 4px;
+}
+
+/* 通用文本 */
+.gold { color: var(--gold-lt); }
+.dim { color: var(--text-dim); }
+.green { color: var(--affix); }
+.red { color: #ff7a6a; }
+.blue { color: #7db8ff; }
+.num { font-family: Consolas, "Courier New", monospace; }
+
+/* 发光按钮基类 */
+.btn {
+  display: inline-block;
+  padding: 6px 16px;
+  color: var(--text);
+  background: linear-gradient(180deg, #4b3118, #2a1a0c);
+  border: 1px solid #8a6a32;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px;
+  letter-spacing: 1px;
+  transition: all .12s;
+  box-shadow: inset 0 1px 0 rgba(255,220,140,.12);
+}
+.btn:hover { border-color: var(--gold-lt); color: #fff3c9; background: linear-gradient(180deg,#5c3d1e,#33200f); }
+.btn:active { transform: translateY(1px); }
+.btn.primary { background: linear-gradient(180deg,#7d2a1c,#4a130b); border-color: #c4694f; }
+.btn.primary:hover { background: linear-gradient(180deg,#9a3524,#5c1a10); }
+.btn.small { padding: 3px 10px; font-size: 12px; }
+.btn[disabled] { opacity: .4; cursor: not-allowed; }
+
+/* 面板标题字体 */
+.panel-title {
+  font-size: 15px; letter-spacing: 3px; color: var(--gold-lt);
+  text-shadow: 0 1px 2px #000;
+}
+
+/* ===== 移动端适配（V0.2.03） ===== */
+html, body {
+  touch-action: none;
+  overscroll-behavior: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+#game { touch-action: none; }
+#rotate-hint {
+  display: none;
+  position: fixed; left: 50%; top: 8px; transform: translateX(-50%);
+  padding: 5px 14px; z-index: 9999; pointer-events: none;
+  font-size: 13px; letter-spacing: 1px; color: #ffe9b0;
+  background: rgba(20,12,5,.85); border: 1px solid #8a6a32; border-radius: 14px;
+}
+@media (orientation: portrait) and (max-width: 900px) {
+  #rotate-hint { display: block; }
+}
+@media (max-width: 900px) {
+  .btn { padding: 7px 14px; font-size: 14px; }
+  .btn.small { padding: 4px 9px; font-size: 12px; }
+  .panel-body { font-size: 13px; }
+}

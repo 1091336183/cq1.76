@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0d0b09">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>传奇1.76 · 重生 V0.2.03</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/ui.css">
+<link rel="stylesheet" href="css/hud.css">
+<link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+<div id="rotate-hint">建议横屏体验</div>
+<div id="stage">
+  <canvas id="game" width="1024" height="768"></canvas>
+
+  <!-- ===== 游戏 HUD ===== -->
+  <div id="hud" class="hidden">
+    <div class="hud-status">
+      <div class="portrait" id="hud-portrait"></div>
+      <div class="bars">
+        <div class="hud-name"><span id="hud-name">冒险者</span><span id="hud-lv">Lv.1</span></div>
+        <div class="bar bar-hp"><i id="hud-hp-fill"></i><span id="hud-hp-text">0/0</span></div>
+        <div class="bar bar-mp"><i id="hud-mp-fill"></i><span id="hud-mp-text">0/0</span></div>
+        <div class="bar bar-exp"><i id="hud-exp-fill"></i><span id="hud-exp-text">0%</span></div>
+      </div>
+    </div>
+
+    <div class="hud-target hidden" id="hud-target">
+      <div class="ht-name" id="hud-target-name">—</div>
+      <div class="bar bar-target"><i id="hud-target-fill"></i></div>
+    </div>
+
+    <div class="hud-minimap" id="hud-minimap">
+      <div class="mm-tools">
+        <span class="mm-title">地图</span>
+        <button class="mm-btn" data-act="mini-out" title="缩小地图">－</button>
+        <button class="mm-btn" data-act="mini-in" title="放大地图">＋</button>
+        <button class="mm-btn" data-act="mini-hide" title="隐藏地图（M）">×</button>
+      </div>
+      <canvas id="minimap" width="160" height="120"></canvas>
+      <div class="mm-label" id="mm-label">海曦村</div>
+    </div>
+    <button class="mm-show hidden" id="mm-show" data-act="mini-show" title="显示小地图（M）">地图 M</button>
+
+    <div class="hud-quest" id="hud-quest"></div>
+    <div class="hud-log" id="hud-log"></div>
+
+    <div class="hud-bottom">
+      <div class="hb-left">
+        <div class="hb-map" id="hud-mapname">海曦村</div>
+        <div class="hb-coord" id="hud-coord">(24,20)</div>
+      </div>
+      <div class="hb-items" id="hud-items"></div>
+      <div class="hb-skills" id="hud-skills"></div>
+      <div class="hb-btns" id="hud-btns"></div>
+    </div>
+  </div>
+
+  <div id="panel-layer"></div>
+  <div id="tooltip" class="hidden"></div>
+  <div id="toast-layer"></div>
+  <div id="overlay" class="hidden"></div>
+</div>
+
+<script src="js/data/config.js"></script>
+<script src="js/core/util.js"></script>
+<script src="js/data/items.js"></script>
+<script src="js/data/items_v02.js"></script>
+<script src="js/data/monsters.js"></script>
+<script src="js/data/monsters_v02.js"></script>
+<script src="js/data/drops.js"></script>
+<script src="js/data/drops_v02.js"></script>
+<script src="js/data/maps.js"></script>
+<script src="js/data/maps_v02.js"></script>
+<script src="js/data/skills.js"></script>
+<script src="js/data/skills_v02.js"></script>
+<script src="js/data/quests.js"></script>
+<script src="js/data/quests_v02.js"></script>
+<script src="js/data/npcs.js"></script>
+<script src="js/data/npcs_v02.js"></script>
+<script src="js/core/audio.js"></script>
+<script src="js/systems/equipment.js"></script>
+<script src="js/systems/inventory.js"></script>
+<script src="js/systems/quest.js"></script>
+<script src="js/systems/gallery.js"></script>
+<script src="js/systems/shop.js"></script>
+<script src="js/core/state.js"></script>
+<script src="js/world/pathfinding.js"></script>
+<script src="js/world/terrain.js"></script>
+<script src="js/world/map.js"></script>
+<script src="js/world/camera.js"></script>
+<script src="js/entity/player.js"></script>
+<script src="js/entity/monster.js"></script>
+<script src="js/entity/npc.js"></script>
+<script src="js/entity/projectile.js"></script>
+<script src="js/combat/damage.js"></script>
+<script src="js/combat/skills.js"></script>
+<script src="js/combat/loot.js"></script>
+<script src="js/ui/panel.js"></script>
+<script src="js/ui/hud.js"></script>
+<script src="js/ui/page_character.js"></script>
+<script src="js/ui/page_bag.js"></script>
+<script src="js/ui/page_skill.js"></script>
+<script src="js/ui/page_quest.js"></script>
+<script src="js/ui/page_gallery.js"></script>
+<script src="js/ui/page_system.js"></script>
+<script src="js/ui/page_shop.js"></script>
+<script src="js/ui/create_role.js"></script>
+<script src="js/core/input.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
