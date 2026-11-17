@@ -9,9 +9,10 @@
       const p = G.S.player;
       p.stats.kills += 1;
 
-      // 经验
-      G.Player.gainExp(p, m.def.exp);
-      G.Projectile.float(m.x, m.y - 46, '+' + m.def.exp + ' 经验', '#c9a227');
+      // 经验（V0.2.04：测试期倍率 G.CFG.EXP_RATE，正式版改回 1）
+      const exp = Math.max(1, Math.round(m.def.exp * (G.CFG.EXP_RATE || 1)));
+      G.Player.gainExp(p, exp);
+      G.Projectile.float(m.x, m.y - 46, '+' + exp + ' 经验', '#c9a227');
 
       // 金币
       const gold = G.U.ri(m.def.gold[0], m.def.gold[1]);
@@ -30,7 +31,7 @@
       if (G.S.target === m) { G.S.target = null; p.target = null; }
       p.attackMove = false;
       G.Audio.play('die');
-      G.UI.log('击败 ' + m.def.name + '，获得经验 ' + m.def.exp + '、金币 ' + gold, 'sys');
+      G.UI.log('击败 ' + m.def.name + '，获得经验 ' + exp + '、金币 ' + gold, 'sys');
       G.Quest.onKill(p, m.def.baseName);
       if (G.Gallery) G.Gallery.onKill(p, m.def.baseName);
     },

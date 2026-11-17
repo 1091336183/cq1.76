@@ -90,18 +90,13 @@ html, body {
   -webkit-tap-highlight-color: transparent;
 }
 #game { touch-action: none; }
-#rotate-hint {
-  display: none;
-  position: fixed; left: 50%; top: 8px; transform: translateX(-50%);
-  padding: 5px 14px; z-index: 9999; pointer-events: none;
-  font-size: 13px; letter-spacing: 1px; color: #ffe9b0;
-  background: rgba(20,12,5,.85); border: 1px solid #8a6a32; border-radius: 14px;
-}
-@media (orientation: portrait) and (max-width: 900px) {
-  #rotate-hint { display: block; }
-}
 @media (max-width: 900px) {
   .btn { padding: 7px 14px; font-size: 14px; }
   .btn.small { padding: 4px 9px; font-size: 12px; }
   .panel-body { font-size: 13px; }
 }
+
+/* ===== V0.2.04 竖屏布局（480×960，由 main.js 设置舞台尺寸） ===== */
+body.portrait #stage { box-shadow: none; }
+body.portrait .panel { max-height: calc(100% - 148px); }
+body.portrait .panel-body { padding: 8px 10px 10px; }

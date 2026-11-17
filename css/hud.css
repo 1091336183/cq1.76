@@ -197,3 +197,36 @@
 .hb-btns { gap: 5px; }
 .hb-btns .btn { padding: 4px 6px; font-size: 11px; }
 .hb-btns .btn b { font-size: 9px; margin-left: 2px; }
+
+/* ===== V0.2.04 竖屏 HUD：底栏三行 + 顶部组件重排（480×960） ===== */
+body.portrait .hud-status { left: 8px; top: 8px; padding: 6px; gap: 6px; }
+body.portrait .portrait { width: 52px; height: 52px; flex: 0 0 52px; }
+body.portrait .bars { width: 158px; }
+body.portrait .hud-minimap { right: 8px; top: 8px; }
+body.portrait .mm-show { right: 8px; top: 8px; }
+body.portrait .hud-target {
+  left: 8px; right: 8px; top: 158px;
+  width: auto; transform: none;
+}
+body.portrait .hud-quest { left: 8px; top: 202px; width: 230px; }
+body.portrait .hud-log {
+  left: 8px; bottom: 132px;
+  width: 300px; height: 108px;
+}
+body.portrait .hud-bottom {
+  width: 100%; height: 124px;
+  padding: 4px 8px;
+  gap: 4px 6px;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+body.portrait .hb-left { order: 1; width: auto; flex: 0 0 auto; }
+body.portrait .hb-btns { order: 2; margin-left: auto; gap: 4px; }
+body.portrait .hb-btns .btn { padding: 5px 6px; font-size: 11px; }
+body.portrait .hb-btns .btn b { display: none; }
+body.portrait .hb-items { order: 3; flex: 0 0 100%; }
+body.portrait .hb-skills {
+  order: 4; flex: 0 0 100%;
+  margin-left: 0; padding-left: 0; border-left: none;
+}
+body.portrait .slot { width: 34px; height: 34px; }

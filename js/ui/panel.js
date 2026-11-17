@@ -85,8 +85,8 @@
     const sy = (cy - stageRect.top) / G.UI.scale;
     const w = el.offsetWidth, h = el.offsetHeight;
     let x = sx + 16, y = sy + 12;
-    if (x + w > 1010) x = sx - w - 12;
-    if (y + h > 758) y = 758 - h;
+    if (x + w > G.CFG.VIEW_W - 14) x = sx - w - 12;
+    if (y + h > G.CFG.VIEW_H - 10) y = G.CFG.VIEW_H - 10 - h;
     if (y < 2) y = 2;
     el.style.left = x + 'px';
     el.style.top = y + 'px';
@@ -174,9 +174,12 @@
         const el = document.createElement('div');
         el.className = 'panel';
         el.setAttribute('data-panel', id);
-        const w = opts.width || 520;
-        const left = opts.x != null ? opts.x : Math.max(10, (1024 - w) / 2 + (Object.keys(this.list).length % 3) * 24);
-        const top = opts.y != null ? opts.y : 80 + (Object.keys(this.list).length % 3) * 28;
+        const portrait = !!(G.MOBILE && G.MOBILE.portrait);
+        const VW = G.CFG.VIEW_W;
+        const n = Object.keys(this.list).length % 3;
+        const w = portrait ? Math.min(opts.width || 520, VW - 16) : (opts.width || 520);
+        const left = portrait ? 8 : (opts.x != null ? opts.x : Math.max(10, (VW - w) / 2 + n * 24));
+        const top = portrait ? 12 : (opts.y != null ? opts.y : 80 + n * 28);
         el.style.left = left + 'px';
         el.style.top = top + 'px';
         el.style.width = w + 'px';
@@ -253,8 +256,8 @@
         const s = G.UI.scale;
         let x = (e.clientX - sr.left) / s - ox;
         let y = (e.clientY - sr.top) / s - oy;
-        x = G.U.clamp(x, -el.offsetWidth + 80, 1024 - 80);
-        y = G.U.clamp(y, 0, 768 - 34);
+        x = G.U.clamp(x, -el.offsetWidth + 80, G.CFG.VIEW_W - 80);
+        y = G.U.clamp(y, 0, G.CFG.VIEW_H - 34);
         el.style.left = x + 'px';
         el.style.top = y + 'px';
       });

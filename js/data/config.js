@@ -1,20 +1,33 @@
 /* ===== 全局配置 ===== */
 window.G = window.G || {};
 
+/* V0.2.04：手机竖屏检测（屏宽 ≤900 且高 > 宽即视为竖屏） */
+(function () {
+  const ua = navigator.userAgent || '';
+  const w = window.innerWidth || 1024;
+  const h = window.innerHeight || 768;
+  G.MOBILE = {
+    touch: ('ontouchstart' in window) || navigator.maxTouchPoints > 0 || /Android|iPhone|iPad|iPod|Mobile/i.test(ua),
+    portrait: w <= 900 && h > w
+  };
+})();
+
 G.CFG = {
-  VERSION: '0.2.03',
-  VERSION_NAME: 'V0.2.03 三镇修订',
+  VERSION: '0.2.04',
+  VERSION_NAME: 'V0.2.04 三镇修订',
   SAVE_VERSION: 2,
   SAVE_KEY: 'cq176_rebirth_save_v2',
   SAVE_KEY_V1: 'cq176_rebirth_save_v1',
   SAVE_SLOTS: 3,              // 存档位数量（槽 1 沿用 SAVE_KEY）
   TILE: 32,
-  VIEW_W: 1024,
-  VIEW_H: 768,
-  VIEW_HUD: 56,               // 底部操作条高度（可视区需扣除）
-  ZOOM_DEFAULT: 0.86,         // 世界默认缩放（缩小一档，视野更广）
+  // 竖屏使用 480×960 逻辑舞台，只显示地图局部；横屏/桌面保持 1024×768
+  VIEW_W: G.MOBILE.portrait ? 480 : 1024,
+  VIEW_H: G.MOBILE.portrait ? 960 : 768,
+  VIEW_HUD: G.MOBILE.portrait ? 124 : 56,   // 底部操作条高度（可视区需扣除）
+  ZOOM_DEFAULT: G.MOBILE.portrait ? 1.0 : 0.86,  // 竖屏视野约 15×26 格
   ZOOM_MIN: 0.7,
   ZOOM_MAX: 1.2,
+  EXP_RATE: 100,              // 测试期怪物经验倍率（正式版本改回 1）
   LEVEL_CAP: 60,
   BAG_SIZE: 54,
   START_MAP: 'mp_haixicun',

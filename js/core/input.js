@@ -55,8 +55,8 @@
     el.style.top = y + 'px';
     stageEl().appendChild(el);
     const w = el.offsetWidth, h = el.offsetHeight;
-    if (x + w > 1016) el.style.left = Math.max(2, 1016 - w) + 'px';
-    if (y + h > 760) el.style.top = Math.max(2, 760 - h) + 'px';
+    if (x + w > G.CFG.VIEW_W - 8) el.style.left = Math.max(2, G.CFG.VIEW_W - 8 - w) + 'px';
+    if (y + h > G.CFG.VIEW_H - 8) el.style.top = Math.max(2, G.CFG.VIEW_H - 8 - h) + 'px';
   };
 
   /* ---------- 动作 ---------- */

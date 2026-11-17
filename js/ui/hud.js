@@ -43,11 +43,13 @@
     const showBtn = $('mm-show');
     if (!box || !cv) return;
     const sc = this.miniScale();
-    const w = Math.round(160 * sc), h = Math.round(120 * sc);
+    const portrait = !!(G.MOBILE && G.MOBILE.portrait);
+    const baseW = portrait ? 140 : 160, baseH = portrait ? 105 : 120;
+    const w = Math.round(baseW * sc), h = Math.round(baseH * sc);
     cv.style.width = w + 'px';
     cv.style.height = h + 'px';
     box.style.width = (w + 4) + 'px';
-    box.style.right = '12px';
+    box.style.right = portrait ? '8px' : '12px';
     box.classList.toggle('hidden', !!s.miniHidden);
     if (showBtn) showBtn.classList.toggle('hidden', !s.miniHidden);
     this.renderMinimap();

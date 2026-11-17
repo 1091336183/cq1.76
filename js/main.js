@@ -3,6 +3,7 @@
   const T = G.CFG.TILE, VW = G.CFG.VIEW_W, VH = G.CFG.VIEW_H;
   const HUD_H = G.CFG.VIEW_HUD;                 // 底部操作条占用高度
   const VIEW_H = VH - HUD_H;                    // 实际可视高度
+  const PORTRAIT = !!(G.MOBILE && G.MOBILE.portrait);   // V0.2.04：当前是否为竖屏布局
   let cv = null, ctx = null, last = 0, hudT = 0, mmT = 0;
 
   /* ---------- 自适应缩放 ---------- */
@@ -13,6 +14,20 @@
     const oy = (window.innerHeight - VH * s) / 2;
     stage.style.transform = 'translate(' + ox + 'px,' + oy + 'px) scale(' + s + ')';
     G.UI.scale = s;
+  }
+
+  /* ---------- 横竖屏切换：布局模式变化时自动保存并重载 ---------- */
+  function isPortraitNow() {
+    return window.innerWidth <= 900 && window.innerHeight > window.innerWidth;
+  }
+
+  function onViewportChange() {
+    if (isPortraitNow() !== PORTRAIT) {
+      if (G.S && G.S.player) G.State.save(true);
+      location.reload();
+      return;
+    }
+    fit();
   }
 
   /* ---------- 文本 ---------- */
@@ -598,9 +613,15 @@
     start: function () {
       cv = document.getElementById('game');
       ctx = cv.getContext('2d');
+      const stage = document.getElementById('stage');
+      cv.width = VW;
+      cv.height = VH;
+      stage.style.width = VW + 'px';
+      stage.style.height = VH + 'px';
+      document.body.classList.toggle('portrait', PORTRAIT);
       fit();
-      window.addEventListener('resize', fit);
-      window.addEventListener('orientationchange', function () { setTimeout(fit, 150); });
+      window.addEventListener('resize', onViewportChange);
+      window.addEventListener('orientationchange', function () { setTimeout(onViewportChange, 150); });
       G.Input.bind();
       G.Start.showMenu();
       last = performance.now();

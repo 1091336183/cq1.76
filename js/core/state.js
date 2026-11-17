@@ -23,7 +23,7 @@
     portalLock: false,
     settings: {
       sfx: 0.5, showDmg: true, showHpBar: true, showNames: true, autoSave: true,
-      zoom: 0.86,            // 世界视野缩放（V0.1.01）
+      zoom: G.CFG.ZOOM_DEFAULT,   // 世界视野缩放（V0.1.01；竖屏为 1.0）
       miniScale: 1,          // 小地图缩放档位：0.75 / 1 / 1.35
       miniHidden: false      // 小地图隐藏状态
     },

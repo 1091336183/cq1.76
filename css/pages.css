@@ -208,3 +208,28 @@
 .store-pager { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 7px; }
 .store-pager .btn.cur { border-color: var(--gold-lt); color: #ffe9b0; background: #3f2a10; }
 .store-meta { font-size: 11px; color: #8f7a52; margin-top: 6px; }
+
+/* ===== V0.2.04 竖屏页面适配（480 宽） ===== */
+body.portrait #overlay .ov-box {
+  width: calc(100% - 24px) !important;
+  max-width: none;
+  padding: 14px 12px;
+}
+body.portrait .game-logo { font-size: 34px; letter-spacing: 6px; }
+body.portrait .game-sub { font-size: 12px; letter-spacing: 3px; margin-bottom: 18px; }
+body.portrait .job-cards { flex-direction: column; gap: 8px; margin: 6px 0 12px; }
+body.portrait .job-card { width: auto; }
+body.portrait .job-card .jc-tag { font-size: 11px; }
+body.portrait .name-row { flex-wrap: wrap; }
+body.portrait .name-row input { width: 100%; }
+body.portrait .menu-actions { flex-wrap: wrap; gap: 8px; }
+body.portrait .start-tip { font-size: 10px; }
+body.portrait .result-grid { grid-template-columns: 1fr; }
+body.portrait .char-wrap { flex-direction: column; }
+body.portrait .equip-side { width: auto; flex: 0 0 auto; }
+body.portrait .store-wrap { flex-direction: column; gap: 10px; }
+body.portrait .shop-wrap { flex-direction: column; height: auto; }
+body.portrait .shop-col { min-height: 180px; }
+body.portrait .shop-list { max-height: 220px; }
+body.portrait .gal-head { flex-wrap: wrap; gap: 4px 14px; }
+body.portrait .gal-grid { grid-template-columns: repeat(3, 1fr); max-height: 300px; }
